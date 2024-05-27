@@ -141,3 +141,27 @@ urlpatterns = [
     path('about/',views.about)
 ]
 ```
+Podemos pasar las rutas a cada app creando el archivo urls.py en cada carpeta y poner ahi las rutas que usaremos
+```python
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('', views.hello),
+    path('about/',views.about)
+]
+```
+
+Y urls principal las podemos agregar asi:
+```python
+from django.contrib import admin
+from django.urls import path, include
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('home/', include('myapp.urls'))   #aqui podemos agregar un prefijo a las rutas importadas
+]
+```
+
+de esta manera incluso podemos agregar un prefijo a estas rutas.
+
